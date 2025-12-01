@@ -81,18 +81,17 @@ function FlavourModify(rootPackageJson, flavour) {
         const flavourPath = path.join(__package, '..', flavour);
         const flavourPackagePath = path.join(flavourPath, 'package.json');
         let flavourData = {};
-        if (!fs.existsSync(flavourPackagePath)) { return false; }
+        if (fs.existsSync(flavourPackagePath)) {
+            const data = fs.readFileSync(flavourPackagePath, 'utf8');
+            try { flavourData = JSON.parse(data); } catch { flavourData = {}; }
+        }
 
-        const data = fs.readFileSync(flavourPackagePath, 'utf8');
-        try { flavourData = JSON.parse(data); } catch { return false; }
-        if (!flavourData.configs) { return false; }
         const flavourMeta = flavourData.configs || {};
-
         const packageMeta = rootPackageJson.flavour = {
             "name": "",
             "version": "",
             "sandbox": "",
-            "blueprints": "",
+            "blueprint": "",
             "libraries": ""
         };
 
@@ -109,7 +108,7 @@ function FlavourModify(rootPackageJson, flavour) {
                 }
             }
         })
-        
+
         try { UpdatePackageJson(); } catch { return false; }
         return true;
     } catch {
