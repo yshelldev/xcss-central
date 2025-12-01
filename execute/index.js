@@ -5,6 +5,7 @@ import path from 'path';
 import { spawnSync } from 'child_process';
 import { fileURLToPath } from 'url';
 import { TryDownloadingUrls } from './binary.js';
+import { JSONC } from './jsonc.js';
 
 const platformBinMap = {
     'win32-386': 'windows-386.exe',
@@ -45,7 +46,7 @@ if (packageData.name === "xcss-package") {
     version = packageData["version"]
     packageData["compilerVersion"] = version
     UpdatePackageJson();
-    
+
     scaffoldData.version = version;
     scaffoldData.configs.version = version;
     UpdateScaffoldJson();
@@ -116,18 +117,16 @@ function FlavourModify(rootPackageJson, flavour) {
 }
 
 export async function RunCommand(args = []) {
-    const bin = path.basename(process.argv[1]);
+    // const bin = path.basename(process.argv[1]);
+    const cfg = path.join(process.argv[0], "xcss", "configure.jsonc")
     args = args.length ? args : process.argv.slice(2);
+
     if (args[0] === "binpath") {
         console.log(binpath)
     } else {
         try {
-            if (bin === "xpin" && args.length === 1) {
-                FlavourModify(packageData, args[0])
-                args = [args[0]]
-            } else if (args.length === 2 && args[0] === "spin") {
-                FlavourModify(packageData, args[1])
-            }
+            const flavour = JSONC.Parse(cfg).flavour;
+            if (flavour) { FlavourModify(packageData, flavour); }
 
             await TryDownloadingUrls(binpath, DownloadUrls);
             if (!fs.existsSync(binpath)) {

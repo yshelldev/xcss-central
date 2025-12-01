@@ -1,8 +1,8 @@
 {
   "name": "xcss-package",
   "description": "A powerful CSS Orchastrator for building scalable and high-performance CSS frameworks. Seamlessly blend the raw potential of CSS with the ease of pre-made utilities, managed by a core orchestrator.",
-  "version": "0.0.12",
-  "compilerVersion": "0.0.12",
+  "version": "0.0.13",
+  "compilerVersion": "0.0.13",
   "main": "./execute/index.js",
   "types": "./execute/index.d.ts",
   "exports": "./execute/index.js",
@@ -16,7 +16,6 @@
   },
   "bin": {
     "xcss": "./execute/index.js",
-    "xpin": "./execute/index.js",
     "xdev": "./compiler/scripts/live.sh"
   },
   "scripts": {
