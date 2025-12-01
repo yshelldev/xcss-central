@@ -7,6 +7,8 @@ import { fileURLToPath } from 'url';
 import { TryDownloadingUrls } from './binary.js';
 import { JSONC } from './jsonc.js';
 
+const REPO = "https://github.com/yshelldev/xcss-package"
+
 const platformBinMap = {
     'win32-386': 'windows-386.exe',
     'win32-amd64': 'windows-amd64.exe',
@@ -23,9 +25,9 @@ function normalizeArch(arch) {
     if (arch === 'ia32') return '386';
     return arch;
 }
+const __system = `${process.platform}-${normalizeArch(process.arch)}`;
 
 const __filename = fileURLToPath(import.meta.url);
-const __system = `${process.platform}-${normalizeArch(process.arch)}`;
 const __binfile = platformBinMap[__system];
 const __package = path.resolve(__filename, '..', '..');
 const __compiler = path.resolve(__package, 'compiler');
@@ -33,9 +35,8 @@ const __scaffold = path.resolve(__package, 'scaffold');
 const __bindir = path.resolve(__compiler, 'bin');
 if (!__binfile) { console.error(`Unsupported platform or architecture: ${__system}`); process.exit(1); }
 
-const soure_repo = "https://github.com/yshelldev/xcss-package"
 const packageJsonPath = path.join(__package, 'package.json');
-const scaffoldJsonPath = path.join(__package, 'scaffold', 'package.json');
+const scaffoldJsonPath = path.join(__scaffold, 'package.json');
 const packageData = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
 const scaffoldData = JSON.parse(fs.readFileSync(scaffoldJsonPath, 'utf8'));
 const UpdatePackageJson = () => fs.writeFileSync(packageJsonPath, JSON.stringify(packageData, " ", "  "))
@@ -56,10 +57,10 @@ const patchTag = version;
 const minorTag = version.split(".").slice(0, 2).join(".");
 const majorTag = version.split(".")[0];
 
-const patchTagUrl = `${soure_repo}/releases/download/v${patchTag}/${__binfile}`;
-const minorTagUrl = `${soure_repo}/releases/download/v${minorTag}/${__binfile}`;
-const majorTagUrl = `${soure_repo}/releases/download/v${majorTag}/${__binfile}`;
-const latestTagUrl = `${soure_repo}/releases/download/latest/${__binfile}`;
+const patchTagUrl = `${REPO}/releases/download/v${patchTag}/${__binfile}`;
+const minorTagUrl = `${REPO}/releases/download/v${minorTag}/${__binfile}`;
+const majorTagUrl = `${REPO}/releases/download/v${majorTag}/${__binfile}`;
+const latestTagUrl = `${REPO}/releases/download/latest/${__binfile}`;
 const DownloadUrls = [patchTagUrl, minorTagUrl, majorTagUrl, latestTagUrl]
 
 const devMode = fs.existsSync(path.resolve(__compiler, "scripts"));
@@ -117,8 +118,7 @@ function FlavourModify(rootPackageJson, flavour) {
 }
 
 export async function RunCommand(args = []) {
-    // const bin = path.basename(process.argv[1]);
-    const cfg = path.join(process.argv[0], "xcss", "configure.jsonc")
+    const cfg = path.join(process.env.PWD, "xcss", "configure.jsonc")
     args = args.length ? args : process.argv.slice(2);
 
     if (args[0] === "binpath") {
