@@ -1096,29 +1096,30 @@ Use this scaffold template as a starting point for your customized CSS framework
 
 ## Setup Steps
 
-### 1. Clone Repository
+### 1. Clone the Repository
 
-Clone this repository to begin scaffolding your XCSS project.
+Start by cloning this repository to set up your XCSS scaffold project.
 
-### 2. Update Template Folders
+### 2. Configure for Your Development Setup
 
-Modify the folder structure as needed, but remember to update the configs field in package.json accordingly.
+The scaffold uses Sass as its CSS compiler, which helps efficiently create and maintain multiple class variations with similar structures. A vanilla JS sandbox is included for fast previews—you can rewrite it to work with your preferred framework as long as you adhere to the provided API methods and avoid breaking core logic.
 
-#### `./library` (customizable path)
+### 3. Customize Template Folders
 
-Store your design libraries here. Refer to How to Manage Libraries for details.
+Adjust the folder structure to suit your project needs. If you do so, be sure to update the corresponding paths in the package.json configuration.
 
-#### `./blueprint` (customizable path)
+Refer to the official documentation on library organization here:
+https://www.xcss.io/documentation/4-libraries
 
-Configure initial stylesheets, tokens, and design system foundations.
+- `./library` (customizable): Where your design libraries should reside. Refer to the "How to Manage Libraries" documentation for guidance.
 
-#### `./sandbox` (customizable path)
+- `./blueprint` (customizable): Contains foundational stylesheets, design tokens, and system components.
 
-Preview components in real-time. Customize or rewrite without breaking the core API logic.
+- `./sandbox` (customizable): Use this area to preview components live. Feel free to customize or rewrite to fit your workflow, but maintain API compatibility.
 
-### 3. Update `package.json`
+### 4. Update `package.json`
 
-Set valid author and repository details. Adjust the flavour field if paths change.
+Ensure that your package.json file contains correct author and repository details. Also, update the configs paths if you change the folder layout:
 
 ```json
 {
@@ -1132,9 +1133,9 @@ Set valid author and repository details. Adjust the flavour field if paths chang
 }
 ```
 
-This data integrates directly with xcss-package.
+This configuration connects directly with the xcss-package tooling.
 ​
-### 4. Update `README.md`
+### 5. Update `README.md`
 
 Customize the `README.md` file to reflect your project's specifics. Include:
 
@@ -1144,6 +1145,6 @@ Customize the `README.md` file to reflect your project's specifics. Include:
 - Contribution guidelines (if open source)
 - License information
 
-### 5. Publish or Keep Private
+### 6. Publish or Keep Private
 
-Publish to npm or maintain as a private template for internal use.
+Decide whether to publish your scaffold to npm for public use or keep it private for internal projects.
