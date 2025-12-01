@@ -1,8 +1,8 @@
 {
   "name": "xcss-package",
   "description": "A powerful CSS Orchastrator for building scalable and high-performance CSS frameworks. Seamlessly blend the raw potential of CSS with the ease of pre-made utilities, managed by a core orchestrator.",
-  "version": "",
-  "compilerVersion": "",
+  "version": "0.0.15",
+  "compilerVersion": "0.0.15",
   "main": "./execute/index.js",
   "types": "./execute/index.d.ts",
   "exports": "./execute/index.js",
