@@ -8,11 +8,11 @@
   "exports": "./execute/index.js",
   "typings": "./execute/index.d.ts",
   "flavour": {
-    "name": "",
-    "version": "",
-    "sandbox": "",
-    "blueprint": "",
-    "libraries": ""
+    "name": "scaffold",
+    "version": "0.0.15",
+    "sandbox": "/run/media/yshell-dev/Workspace/xcss-station/vscode/xcss-scaffold/sandbox",
+    "blueprint": "/run/media/yshell-dev/Workspace/xcss-station/vscode/xcss-scaffold/blueprint",
+    "libraries": "/run/media/yshell-dev/Workspace/xcss-station/vscode/xcss-scaffold/libraries"
   },
   "bin": {
     "xcss": "./execute/index.js",
@@ -21,6 +21,7 @@
   "scripts": {
     "sync": "./compiler/scripts/sync.sh",
     "postinstall": "chmod +x ./execute/index.js && ./execute/index.js",
+    "scaffold:link": "ln -s \"$(pwd)/scaffold\" ../xcss-scaffold",
     "scaffold:build": "cd scaffold && npm run build && cd ..",
     "profile": "go install github.com/moderato-app/live-pprof@latest && live-pprof",
     "lint": "cd source && golangci-lint run && cd ..",
