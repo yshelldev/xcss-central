@@ -1029,7 +1029,7 @@ Use this repository as a template to create your own XCSS frameworks and flavors
 
 # Installation
 
-1. Install the **xcss-scaffold** using your package manager:
+1. Install prefered flavour of XCSS using your package manager:
 
 ```sh
   npm install xcss-scaffold
@@ -1037,25 +1037,13 @@ Use this repository as a template to create your own XCSS frameworks and flavors
   pnpm add xcss-scaffold
 ```
 
-2. Initialize XCSS in your project:
+2. Initialize XCSS with the installed **flavour**:
 
 ```sh
-  xcss init
+  xcss init xcss-scaffold
 ```
 
-3. Update `xcss/configure.jsonc` with your flavour and other settings:
-
-```jsonc
-{...
-  "flavour": "xcss-scaffold"
-...}
-```
-
-4. Rerun `xcss init` to apply new configs and perform a health check.
-
-```sh
-  xcss init
-```
+You only need to run the install command for your package manager and then initialize with xcss init xcss-scaffold in your project directory.
 
 ---
 
