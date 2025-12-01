@@ -1,18 +1,18 @@
 {
   "name": "xcss-package",
   "description": "A powerful CSS Orchastrator for building scalable and high-performance CSS frameworks. Seamlessly blend the raw potential of CSS with the ease of pre-made utilities, managed by a core orchestrator.",
-  "version": "0.0.15",
-  "compilerVersion": "0.0.15",
+  "version": "",
+  "compilerVersion": "",
   "main": "./execute/index.js",
   "types": "./execute/index.d.ts",
   "exports": "./execute/index.js",
   "typings": "./execute/index.d.ts",
   "flavour": {
-    "name": "scaffold",
-    "version": "0.0.15",
-    "sandbox": "/run/media/yshell-dev/Workspace/xcss-station/vscode/xcss-scaffold/sandbox",
-    "blueprint": "/run/media/yshell-dev/Workspace/xcss-station/vscode/xcss-scaffold/blueprint",
-    "libraries": "/run/media/yshell-dev/Workspace/xcss-station/vscode/xcss-scaffold/libraries"
+    "name": "",
+    "version": "",
+    "sandbox": "",
+    "blueprint": "",
+    "libraries": ""
   },
   "bin": {
     "xcss": "./execute/index.js",
