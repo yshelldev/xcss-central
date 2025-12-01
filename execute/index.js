@@ -88,13 +88,14 @@ function FlavourModify(rootPackageJson, flavour) {
         try { flavourData = JSON.parse(data); } catch { return false; }
         if (!flavourData.configs) { return false; }
 
-        if (!rootPackageJson.flavour) { rootPackageJson.flavour = {}; }
-        const packageMeta = rootPackageJson.flavour;
-        const flavourMeta = flavourData.configs;
-
-        if (!(typeof packageMeta === "object" && typeof flavourMeta === "object")) {
-            return false
-        }
+        const packageMeta = rootPackageJson.flavour = {
+            "name": "",
+            "version": "",
+            "sandbox": "",
+            "blueprint": "",
+            "libraries": ""
+        };
+        const flavourMeta = flavourData.configs || {};
 
         Object.keys(packageMeta).forEach((k) => {
             if (typeof packageMeta[k] === typeof flavourMeta[k]) {
