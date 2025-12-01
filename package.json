@@ -1,8 +1,8 @@
 {
   "name": "xcss-package",
   "description": "A powerful CSS Orchastrator for building scalable and high-performance CSS frameworks. Seamlessly blend the raw potential of CSS with the ease of pre-made utilities, managed by a core orchestrator.",
-  "version": "0.0.13",
-  "compilerVersion": "0.0.13",
+  "version": "0.0.14",
+  "compilerVersion": "0.0.14",
   "main": "./execute/index.js",
   "types": "./execute/index.d.ts",
   "exports": "./execute/index.js",
@@ -21,11 +21,12 @@
   "scripts": {
     "sync": "./compiler/scripts/sync.sh",
     "postinstall": "chmod +x ./execute/index.js && ./execute/index.js",
+    "scaffold:build": "cd scaffold && npm run build && cd ..",
     "profile": "go install github.com/moderato-app/live-pprof@latest && live-pprof",
     "lint": "cd source && golangci-lint run && cd ..",
     "build": "cd compiler && chmod +x ./scripts/build.sh && ./scripts/build.sh && cd ..",
     "stats": "chmod +x ./compiler/scripts/stats.sh && ./compiler/scripts/stats.sh compiler",
-    "bundle": "node ./execute/index.js && npm pack --dry-run"
+    "bundle": "node ./execute/index.js && npm run scaffold:build && npm pack --dry-run"
   },
   "repository": {
     "type": "git",
