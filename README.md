@@ -1037,13 +1037,13 @@ Use this repository as a template to create your own XCSS frameworks and flavors
   pnpm add xcss-scaffold
 ```
 
-2. Initialize XCSS with the installed **flavour**:
+2. Initialize XCSS in your project directory with the installed **flavour**:
 
 ```sh
   xcss init xcss-scaffold
 ```
 
-You only need to run the install command for your package manager and then initialize with xcss init xcss-scaffold in your project directory.
+This creates the xcss/* config directory using your chosen flavour.
 
 ---
 
