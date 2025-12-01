@@ -5,7 +5,6 @@ import path from 'path';
 import { spawnSync } from 'child_process';
 import { fileURLToPath } from 'url';
 import { TryDownloadingUrls } from './binary.js';
-import { JSONC } from './jsonc.js';
 
 const REPO = "https://github.com/yshelldev/xcss-package"
 
@@ -77,25 +76,25 @@ function syncMarkdown() {
 
 function FlavourModify(rootPackageJson, flavour) {
     try {
-        if (!flavour || typeof flavour !== 'string') { return false; }
+        if (!flavour || typeof flavour !== 'string') { return; }
 
         const flavourPath = path.join(__package, '..', flavour);
         const flavourPackagePath = path.join(flavourPath, 'package.json');
+        let flavourData = {};
         if (!fs.existsSync(flavourPackagePath)) { return false; }
 
         const data = fs.readFileSync(flavourPackagePath, 'utf8');
-        let flavourData;
         try { flavourData = JSON.parse(data); } catch { return false; }
         if (!flavourData.configs) { return false; }
+        const flavourMeta = flavourData.configs || {};
 
         const packageMeta = rootPackageJson.flavour = {
             "name": "",
             "version": "",
             "sandbox": "",
-            "blueprint": "",
+            "blueprints": "",
             "libraries": ""
         };
-        const flavourMeta = flavourData.configs || {};
 
         Object.keys(packageMeta).forEach((k) => {
             if (typeof packageMeta[k] === typeof flavourMeta[k]) {
@@ -110,7 +109,7 @@ function FlavourModify(rootPackageJson, flavour) {
                 }
             }
         })
-
+        
         try { UpdatePackageJson(); } catch { return false; }
         return true;
     } catch {
@@ -119,15 +118,15 @@ function FlavourModify(rootPackageJson, flavour) {
 }
 
 export async function RunCommand(args = []) {
-    const cfg = path.join(process.env.PWD, "xcss", "configure.jsonc")
     args = args.length ? args : process.argv.slice(2);
 
     if (args[0] === "binpath") {
         console.log(binpath)
     } else {
         try {
-            const flavour = JSONC.Parse(cfg).flavour;
-            if (flavour) { FlavourModify(packageData, flavour); }
+            if (args[0] === "init" && args[1]) {
+                FlavourModify(packageData, args[1]);
+            }
 
             await TryDownloadingUrls(binpath, DownloadUrls);
             if (!fs.existsSync(binpath)) {
