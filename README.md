@@ -61,7 +61,7 @@ For using XCSS in non-JavaScript based codebases, install XCSS globally. After t
 Install XCSS Package globally with:
 
 ```bash
-npm install -g xcss-package
+npm install -g xcss-central
 ```
 
 Run XCSS commands directly:
@@ -75,7 +75,7 @@ xcss {command}
 Install XCSS Package as a development dependency locally:
 
 ```bash
-npm install --save-dev xcss-package
+npm install --save-dev xcss-central
 ```
 
 Run XCSS commands locally using npm scripts:
@@ -1017,7 +1017,7 @@ body[data-loading] .$class { ... }
 
 # XCSS Scaffold: Spin Your Flavor
 
-**xcss-scaffold** is the default template bundled with **xcss-package**. No need to download it separately for your project.
+**xcss-scaffold** is the default template bundled with **xcss-central**. No need to download it separately for your project.
 
 Use this repository as a template to create your own XCSS frameworks and flavors.
 
@@ -1090,7 +1090,7 @@ Ensure that your package.json file contains correct author and repository detail
 }
 ```
 
-This configuration connects directly with the xcss-package tooling.
+This configuration connects directly with the xcss-central tooling.
 ​
 ### 5. Update `README.md`
 
