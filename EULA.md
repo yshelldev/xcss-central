@@ -6,9 +6,9 @@ This End User License Agreement ("EULA") governs your use of the Package ("Packa
 
 When redistributing the Package, you must include this EULA and the full text of the MIT License unchanged in all copies or substantial portions of the Package.
 
-## 2. License for XCSS Package, ( `./compiler` )
+## 2. License for XCSS Central, ( `./compiler` )
 
-The XCSS Package—excluding the `./compiler` directory; is licensed under the MIT License, allowing free use, modification, distribution, and commercial/private use.
+The XCSS Central—excluding the `./compiler` directory; is licensed under the MIT License, allowing free use, modification, distribution, and commercial/private use.
 
 - `./scaffold` directory is sourced from a separate MIT-licensed repository.
 - `./compiler` directory has its own distinct licensing terms (see its documentation).

@@ -1,8 +1,8 @@
 {
-  "name": "xcss-package",
+  "name": "xcss-central",
   "description": "A powerful CSS Orchastrator for building scalable and high-performance CSS frameworks. Seamlessly blend the raw potential of CSS with the ease of pre-made utilities, managed by a core orchestrator.",
-  "version": "0.0.18",
-  "compilerVersion": "0.0.18",
+  "version": "0.0.17",
+  "compilerVersion": "0.0.17",
   "main": "./execute/index.js",
   "types": "./execute/index.d.ts",
   "exports": "./execute/index.js",
@@ -31,7 +31,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/yshelldev/xcss-package"
+    "url": "https://github.com/yshelldev/xcss-central"
   },
   "keywords": [
     "css",
@@ -50,9 +50,9 @@
   "licenseFile": "LICENSE",
   "homepage": "https://www.xcss.io",
   "bugs": {
-    "url": "https://github.com/yshelldev/xcss-package/issues"
+    "url": "https://github.com/yshelldev/xcss-central/issues"
   },
-  "contributing": "https://github.com/yshelldev/xcss-package/blob/main/CONTRIBUTING.md",
+  "contributing": "https://github.com/yshelldev/xcss-central/blob/main/CONTRIBUTING.md",
   "funding": {
     "type": "github",
     "url": "https://github.com/sponsors/yshelldev"

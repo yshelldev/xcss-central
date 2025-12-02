@@ -6,7 +6,7 @@ import { spawnSync } from 'child_process';
 import { fileURLToPath } from 'url';
 import { TryDownloadingUrls } from './binary.js';
 
-const REPO = "https://github.com/yshelldev/xcss-package"
+const REPO = "https://github.com/yshelldev/xcss-central"
 
 const platformBinMap = {
     'win32-386': 'windows-386.exe',
@@ -42,7 +42,7 @@ const UpdatePackageJson = () => fs.writeFileSync(packageJsonPath, JSON.stringify
 const UpdateScaffoldJson = () => fs.writeFileSync(scaffoldJsonPath, JSON.stringify(scaffoldData, " ", "  "))
 
 let version = "";
-if (packageData.name === "xcss-package") {
+if (packageData.name === "xcss-central") {
     version = packageData["version"]
     packageData["compilerVersion"] = version
     UpdatePackageJson();
