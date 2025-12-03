@@ -1025,7 +1025,7 @@ Use this repository as a template to create your own XCSS frameworks and flavors
 
 - [Installation](#installation)
 - [Create Flavour](#how-to-spin-your-flavour)
-- [Learn XCSS Syntax](https://www.xcss.io/documentation)
+- [Learn XCSS Basics](https://www.xcss.io/documentation)
 
 # Installation
 
@@ -1065,14 +1065,22 @@ The scaffold uses Sass as its CSS compiler, which helps efficiently create and m
 
 Adjust the folder structure to suit your project needs. If you do so, be sure to update the corresponding paths in the package.json configuration.
 
-Refer to the official documentation on library organization here:
-https://www.xcss.io/documentation/4-libraries
+##### `./library`
 
-- `./library` (customizable): Where your design libraries should reside. Refer to the "How to Manage Libraries" documentation for guidance.
+- **Purpose:** Houses your custom design libraries (CSS files).
+- **Reference:** See Libraries documentation for naming conventions and management.
+- **Customization:** Use your preferred CSS compiler (Sass used here—replace as needed).
 
-- `./blueprint` (customizable): Contains foundational stylesheets, design tokens, and system components.
+##### `./sandbox`
 
-- `./sandbox` (customizable): Use this area to preview components live. Feel free to customize or rewrite to fit your workflow, but maintain API compatibility.
+- **Purpose:** Live preview area for testing components.
+- **Customization:** Freely modify to fit your workflow while preserving API compatibility.
+- **Configuration:** ./xcss/configure.jsonc from working directory is automatically shared with sandbox-view responses for extended functionality.
+
+##### `./blueprint`
+
+- **Purpose:** Contains foundational stylesheets, design tokens, and core system components.
+> **Important:** Do not modify directory structure. Edit only content within files to maintain XCSS compatibility.
 
 ### 4. Update `package.json`
 
