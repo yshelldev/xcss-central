@@ -11,3 +11,5 @@ package-lock.json
 BINPATH
 compiler/**/*
 execute/publish.sh
+
+scaffold/libraries
