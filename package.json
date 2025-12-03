@@ -1,8 +1,8 @@
 {
   "name": "xcss-central",
   "description": "A powerful CSS Orchastrator for building scalable and high-performance CSS frameworks. Seamlessly blend the raw potential of CSS with the ease of pre-made utilities, managed by a core orchestrator.",
-  "version": "0.0.26",
-  "compilerVersion": "0.0.26",
+  "version": "0.0.27",
+  "compilerVersion": "0.0.27",
   "main": "./execute/index.js",
   "types": "./execute/index.d.ts",
   "exports": "./execute/index.js",
@@ -26,7 +26,7 @@
     "lint": "cd source && golangci-lint run && cd ..",
     "build": "cd compiler && chmod +x ./scripts/build.sh && ./scripts/build.sh && cd ..",
     "stats": "chmod +x ./compiler/scripts/stats.sh && ./compiler/scripts/stats.sh compiler",
-    "bundle": "node ./execute/index.js && npm pack --dry-run"
+    "bundle": "npm pack --dry-run"
   },
   "repository": {
     "type": "git",
