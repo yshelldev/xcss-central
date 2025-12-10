@@ -401,7 +401,7 @@ _$custom-pattern="
         ]
       }
     }
-  ], 
+  ],
   "environment": "browser",
 }
 ```

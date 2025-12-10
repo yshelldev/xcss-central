@@ -4,9 +4,11 @@ import fs from 'fs';
 import path from 'path';
 import { spawnSync } from 'child_process';
 import { fileURLToPath } from 'url';
-import { TryDownloadingUrls } from './binary.js';
+import { TryDownloadingUrls } from './install.js';
 
-const REPO = "https://github.com/yshelldev/xcss-central"
+// Repo for Bin download.
+const REPONAME = "xcss-central";
+const REPOLINK = "https://github.com/yshelldev/" + REPONAME
 
 const platformBinMap = {
     'win32-386': 'windows-386.exe',
@@ -36,13 +38,18 @@ if (!__binfile) { console.error(`Unsupported platform or architecture: ${__syste
 
 const packageJsonPath = path.join(__package, 'package.json');
 const scaffoldJsonPath = path.join(__scaffold, 'package.json');
-const packageData = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
-const scaffoldData = JSON.parse(fs.readFileSync(scaffoldJsonPath, 'utf8'));
+const compilerConfigPath = path.join(__package, 'compiler', 'bin', 'configs.json');
+
+const packageData = fs.existsSync(packageJsonPath) ? JSON.parse(fs.readFileSync(packageJsonPath, 'utf8')) : {};
+const scaffoldData = fs.existsSync(scaffoldJsonPath) ? JSON.parse(fs.readFileSync(scaffoldJsonPath, 'utf8')) : {};
+const compilerData = fs.existsSync(compilerConfigPath) ? JSON.parse(fs.readFileSync(compilerConfigPath, 'utf8')) : {};
+
 const UpdatePackageJson = () => fs.writeFileSync(packageJsonPath, JSON.stringify(packageData, " ", "  "))
 const UpdateScaffoldJson = () => fs.writeFileSync(scaffoldJsonPath, JSON.stringify(scaffoldData, " ", "  "))
+const UpdateCompilerConfig = () => fs.writeFileSync(compilerConfigPath, JSON.stringify(compilerData, " ", "  "))
 
 let version = "";
-if (packageData.name === "xcss-central") {
+if (packageData.name === REPONAME) {
     version = packageData["version"]
     packageData["compilerVersion"] = version
     UpdatePackageJson();
@@ -52,14 +59,15 @@ if (packageData.name === "xcss-central") {
     UpdateScaffoldJson();
 } else { version = packageData["compilerVersion"] }
 
+
 const patchTag = version;
 const minorTag = version.split(".").slice(0, 2).join(".");
 const majorTag = version.split(".")[0];
 
-const patchTagUrl = `${REPO}/releases/download/v${patchTag}/${__binfile}`;
-const minorTagUrl = `${REPO}/releases/download/v${minorTag}/${__binfile}`;
-const majorTagUrl = `${REPO}/releases/download/v${majorTag}/${__binfile}`;
-const latestTagUrl = `${REPO}/releases/download/latest/${__binfile}`;
+const patchTagUrl = `${REPOLINK}/releases/download/v${patchTag}/${__binfile}`;
+const minorTagUrl = `${REPOLINK}/releases/download/v${minorTag}/${__binfile}`;
+const majorTagUrl = `${REPOLINK}/releases/download/v${majorTag}/${__binfile}`;
+const latestTagUrl = `${REPOLINK}/releases/download/latest/${__binfile}`;
 const DownloadUrls = [patchTagUrl, minorTagUrl, majorTagUrl, latestTagUrl]
 
 const devMode = fs.existsSync(path.resolve(__compiler, "scripts"));
@@ -68,53 +76,63 @@ const binpath = path.resolve(__bindir, __binfile);
 
 fs.writeFileSync(path.join(__package, "BINPATH"), binpath)
 function syncMarkdown() {
-    let readme = fs.readFileSync(path.resolve(__package, "execute", "index.md")).toString().trim();
+    let readme = fs.readFileSync(path.resolve(__package, "execute", "intro.md")).toString().trim();
     readme += "\n\n---\n\n" + fs.readFileSync(path.resolve(__compiler, "README.md")).toString().trim();
     readme += "\n\n---\n\n" + fs.readFileSync(path.resolve(__scaffold, "README.md")).toString().trim();
     fs.writeFileSync(path.resolve(__package, "README.md"), readme)
 }
 
-function FlavourModify(rootPackageJson, flavour) {
+function ReadFlavourConfigs(flavourdir) {
+    const resolved = {
+        "name": "",
+        "version": "",
+        "sandbox": "",
+        "blueprint": "",
+        "libraries": ""
+    };
     try {
-        if (!flavour || typeof flavour !== 'string') { return; }
-
-        const flavourPath = path.join(__package, '..', flavour);
-        const flavourPackagePath = path.join(flavourPath, 'package.json');
-        let flavourData = {};
+        const flavourPackagePath = path.join(flavourdir, 'package.json');
+        const configs = { ...resolved };
         if (fs.existsSync(flavourPackagePath)) {
             const data = fs.readFileSync(flavourPackagePath, 'utf8');
-            try { flavourData = JSON.parse(data); } catch { flavourData = {}; }
+            try {
+                const flavourData = JSON.parse(data);
+                Object.assign(configs, (flavourData.configs || {}))
+            } catch { }
         }
 
-        const flavourMeta = flavourData.configs || {};
-        const packageMeta = rootPackageJson.flavour = {
-            "name": "",
-            "version": "",
-            "sandbox": "",
-            "blueprint": "",
-            "libraries": ""
-        };
-
-        Object.keys(packageMeta).forEach((k) => {
-            if (typeof packageMeta[k] === typeof flavourMeta[k]) {
+        Object.keys(resolved).forEach((k) => {
+            if (typeof resolved[k] === typeof configs[k]) {
                 switch (k) {
                     case "sandbox":
                     case "blueprint":
                     case "libraries":
-                        packageMeta[k] = path.resolve(flavourPath, flavourMeta[k])
+                        resolved[k] = path.resolve(flavourdir, configs[k])
                         break;
                     default:
-                        packageMeta[k] = flavourMeta[k];
+                        resolved[k] = configs[k];
                 }
             }
         })
-
-        try { UpdatePackageJson(); } catch { return false; }
-        return true;
-    } catch {
-        return false;
+    }
+    finally {
+        return resolved;
     }
 }
+
+compilerData["name"] = packageData["name"];
+compilerData["version"] = packageData["version"];
+const defaultFlavour = ReadFlavourConfigs(__scaffold);
+if (typeof compilerData["flavour"] == "object") {
+    compilerData["flavour"]["default"] = defaultFlavour;
+} else {
+    compilerData["flavour"] = { "default": defaultFlavour }
+}
+if (typeof compilerData["flavour"]["workspace"] !== "object") {
+    compilerData["flavour"]["workspace"] = {}
+}
+UpdateCompilerConfig();
+
 
 export async function RunCommand(args = []) {
     args = args.length ? args : process.argv.slice(2);
@@ -124,7 +142,8 @@ export async function RunCommand(args = []) {
     } else {
         try {
             if (args[0] === "init" && args[1]) {
-                FlavourModify(packageData, args[1]);
+                compilerData["flavour"]["workspace"][process.env.PWD] = ReadFlavourConfigs(path.join(__package, "..", args[1]));
+                UpdateCompilerConfig();
             }
 
             await TryDownloadingUrls(binpath, DownloadUrls);
