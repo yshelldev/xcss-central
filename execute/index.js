@@ -7,8 +7,8 @@ import { fileURLToPath } from 'url';
 import { TryDownloadingUrls } from './install.js';
 
 // Repo for Bin download.
-const REPONAME = "xcss-central";
-const REPOLINK = "https://github.com/yshelldev/" + REPONAME
+const REPONAME = "xtatix-central";
+const REPOLINK = "https://github.com/xtatixone/" + REPONAME
 
 const platformBinMap = {
     'win32-386': 'windows-386.exe',

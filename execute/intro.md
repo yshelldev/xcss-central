@@ -1,6 +1,6 @@
-# XCSS Central
+# Xtatix
 
-> The releases in this repository are not covered by the agreements of this package. It is solely used by XCSS Compiler distribution purposes.
+> The releases in this repository are not covered by the agreements of this package. It is solely used by Xtatix Compiler distribution purposes.
 
 ## Chapters
 

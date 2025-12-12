@@ -1,6 +1,6 @@
-# XCSS Central
+# Xtatix Central
 
-> The releases in this repository are not covered by the agreements of this package. It is solely used by XCSS Compiler distribution purposes.
+> The releases in this repository are not covered by the agreements of this package. It is solely used by Xtatix Compiler distribution purposes.
 
 ## Chapters
 
@@ -13,22 +13,22 @@
 
 ## End-User License Agreement (EULA)
 
-By using this software, you agree to the terms and conditions outlined in the [End-User License Agreement](https://www.xcss.io/agreements/license).
+By using this software, you agree to the terms and conditions outlined in the [End-User License Agreement](https://www.xtatix.io/agreements/license).
 For details, please read the full EULA document provided in this repository.
 
 ---
 
-## What is XCSS?
+## What is Xtatix?
 
-![Preview](https://github.com/yshelldev/xcss-vscode/raw/HEAD/preview.png)
+![Preview](https://github.com/yshelldev/xtatix-vscode/raw/HEAD/preview.png)
 
-XCSS is a constraint-driven CSS build-time kernel designed to be the foundational engine for building custom CSS frameworks. Rather than being a traditional CSS framework loaded with predefined classes, XCSS provides a powerful structural abstraction that preserves the full flexibility of vanilla CSS while adding native dependency management and modular composition. It works seamlessly across any text-based environment, is framework agnostic, and integrates effortlessly with existing design systems and token libraries.
+Xtatix is a constraint-driven CSS build-time kernel designed to be the foundational engine for building custom CSS frameworks. Rather than being a traditional CSS framework loaded with predefined classes, Xtatix provides a powerful structural abstraction that preserves the full flexibility of vanilla CSS while adding native dependency management and modular composition. It works seamlessly across any text-based environment, is framework agnostic, and integrates effortlessly with existing design systems and token libraries.
 
-By focusing on modular style blocks, logical constraint-based syntax, and automatic cascading and dependency resolution, XCSS empowers teams to build maintainable, predictable, and optimized stylesheets tailored precisely to their project needs.
+By focusing on modular style blocks, logical constraint-based syntax, and automatic cascading and dependency resolution, Xtatix empowers teams to build maintainable, predictable, and optimized stylesheets tailored precisely to their project needs.
 
-## Why Use XCSS?
+## Why Use Xtatix?
 
-XCSS strikes a careful balance between raw flexibility and developer experience without sacrificing either. It:
+Xtatix strikes a careful balance between raw flexibility and developer experience without sacrificing either. It:
 
 - Enables fully customizable framework creation with minimal initial setup, reducing context switching between CSS and HTML.
 - Resolves style dependencies and cascading order natively at build time, minimizing manual overrides and conflicts.
@@ -36,52 +36,52 @@ XCSS strikes a careful balance between raw flexibility and developer experience 
 - Delivers production-ready optimized builds with debloated, dependency-aware styles for faster and cleaner deployment.
 - Acts as a robust kernel platform, giving you complete control and transparency while providing structural best practices and optimization out of the box.
 
-In short, XCSS is the essential, extensible core upon which efficient, scalable, and maintainable CSS frameworks can be built—offering the power and performance that modern design systems and large-scale projects demand.
+In short, Xtatix is the essential, extensible core upon which efficient, scalable, and maintainable CSS frameworks can be built—offering the power and performance that modern design systems and large-scale projects demand.
 
 ## Sections
 
-0. [Installation](http://www.xcss.io/documentation/0-installation)
-1. [Command Line](http://www.xcss.io/documentation/1-command)
-2. [Example Preview](http://www.xcss.io/documentation/2-example)
-3. [Directory](http://www.xcss.io/documentation/3-directory)
-4. [Composing Libraries](http://www.xcss.io/documentation/4-libraries)
-5. [Operators](http://www.xcss.io/documentation/5-operators)
-6. [Inline Composition](http://www.xcss.io/documentation/6-composing)
-7. [Custom HTML Tags](http://www.xcss.io/documentation/7-custom-tags)
-8. [Appendix](http://www.xcss.io/documentation/8-appendix)
+0. [Installation](http://www.xtatix.io/documentation/0-installation)
+1. [Command Line](http://www.xtatix.io/documentation/1-command)
+2. [Example Preview](http://www.xtatix.io/documentation/2-example)
+3. [Directory](http://www.xtatix.io/documentation/3-directory)
+4. [Composing Libraries](http://www.xtatix.io/documentation/4-libraries)
+5. [Operators](http://www.xtatix.io/documentation/5-operators)
+6. [Inline Composition](http://www.xtatix.io/documentation/6-composing)
+7. [Custom HTML Tags](http://www.xtatix.io/documentation/7-custom-tags)
+8. [Appendix](http://www.xtatix.io/documentation/8-appendix)
 
 # 0. Installation
 
-For using XCSS in non-JavaScript based codebases, install XCSS globally. After that, the usage remains the same as in other environments.
+For using Xtatix in non-JavaScript based codebases, install Xtatix globally. After that, the usage remains the same as in other environments.
 
 ## Using NPM
 
 ### Global Installation
 
-Install XCSS Central globally with:
+Install Xtatix Central globally with:
 
 ```bash
-npm install -g xcss-central
+npm install -g xtatix-central
 ```
 
-Run XCSS commands directly:
+Run Xtatix commands directly:
 
 ```bash
-xcss {command}
+xtatix {command}
 ```
 
 ### Local Installation
 
-Install XCSS Central as a development dependency locally:
+Install Xtatix Central as a development dependency locally:
 
 ```bash
-npm install --save-dev xcss-central
+npm install --save-dev xtatix-central
 ```
 
-Run XCSS commands locally using npm scripts:
+Run Xtatix commands locally using npm scripts:
 
 ```bash
-npx xcss {command}
+npx xtatix {command}
 ```
 # 1. Command Line
 
@@ -1029,35 +1029,35 @@ body[data-loading] .$class { ... }
 
 ---
 
-# XCSS Scaffold: Spin Your Flavor
+# Xtatix Scaffold: Spin Your Flavor
 
-**xcss-scaffold** is the default template bundled with **xcss-central**. No need to download it separately for your project.
+**xcaffold** is the default template bundled with **xtatix-central**. No need to download it separately for your project.
 
-Use this repository as a template to create your own XCSS frameworks and flavors.
+Use this repository as a template to create your own Xtatix frameworks and flavors.
 
 ## Navigation
 
 - [Installation](#installation)
 - [Create Flavour](#how-to-spin-your-flavour)
-- [Learn XCSS Basics](https://www.xcss.io/documentation)
+- [Learn Xtatix Basics](https://www.xtatix.io/documentation)
 
 # Installation
 
-1. Install prefered flavour of XCSS using your package manager:
+1. Install prefered flavour of Xtatix using your package manager:
 
 ```sh
-  npm install xcss-scaffold
-  yarn add xcss-scaffold
-  pnpm add xcss-scaffold
+  npm install xcaffold
+  yarn add xcaffold
+  pnpm add xcaffold
 ```
 
-2. Initialize XCSS in your project directory with the installed **flavour**:
+2. Initialize Xtatix in your project directory with the installed **flavour**:
 
 ```sh
-  xcss init xcss-scaffold
+  xtatix init xcaffold
 ```
 
-This creates the xcss/* config directory using your chosen flavour.
+This creates the xtatix/* config directory using your chosen flavour.
 
 ---
 
@@ -1069,7 +1069,7 @@ Use this scaffold template as a starting point for your customized CSS framework
 
 ### 1. Clone the Repository
 
-Start by cloning this repository to set up your XCSS scaffold project.
+Start by cloning this repository to set up your Xtatix scaffold project.
 
 ### 2. Configure for Your Development Setup
 
@@ -1089,12 +1089,12 @@ Adjust the folder structure to suit your project needs. If you do so, be sure to
 
 - **Purpose:** Live preview area for testing components.
 - **Customization:** Freely modify to fit your workflow while preserving API compatibility.
-- **Configuration:** ./xcss/configure.jsonc from working directory is automatically shared with sandbox-view responses for extended functionality.
+- **Configuration:** ./xtatix/configure.jsonc from working directory is automatically shared with sandbox-view responses for extended functionality.
 
 ##### `./blueprint`
 
 - **Purpose:** Contains foundational stylesheets, design tokens, and core system components.
-> **Important:** Do not modify directory structure. Edit only content within files to maintain XCSS compatibility.
+> **Important:** Do not modify directory structure. Edit only content within files to maintain Xtatix compatibility.
 
 ### 4. Update `package.json`
 
@@ -1103,7 +1103,7 @@ Ensure that your package.json file contains correct author and repository detail
 ```json
 {
   "configs": {
-    "name": "xcss-scaffold",
+    "name": "xcaffold",
     "version": "0.0.0",
     "sandbox": "sandbox",
     "blueprint": "blueprint",
@@ -1112,7 +1112,7 @@ Ensure that your package.json file contains correct author and repository detail
 }
 ```
 
-This configuration connects directly with the xcss-central tooling.
+This configuration connects directly with the xtatix-central tooling.
 ​
 ### 5. Update `README.md`
 

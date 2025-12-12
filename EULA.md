@@ -6,9 +6,9 @@ This End User License Agreement ("EULA") governs your use of the Package ("Packa
 
 When redistributing the Package, you must include this EULA and the full text of the MIT License unchanged in all copies or substantial portions of the Package.
 
-## 2. License for XCSS Central, ( `./compiler` )
+## 2. License for Xtatix Central, ( `./compiler` )
 
-The XCSS Central—excluding the `./compiler` directory; is licensed under the MIT License, allowing free use, modification, distribution, and commercial/private use.
+The Xtatix Central—excluding the `./compiler` directory; is licensed under the MIT License, allowing free use, modification, distribution, and commercial/private use.
 
 - `./scaffold` directory is sourced from a separate MIT-licensed repository.
 - `./compiler` directory has its own distinct licensing terms (see its documentation).
@@ -39,4 +39,4 @@ The authors or copyright holders shall not be liable for any damages arising fro
 
 ---
 
-This EULA forms a binding legal agreement between you and the authors regarding your use of XCSS. By downloading, installing, or using XCSS, you acknowledge that you have read, understood, and agreed to be bound by these terms.
+This EULA forms a binding legal agreement between you and the authors regarding your use of Xtatix. By downloading, installing, or using Xtatix, you acknowledge that you have read, understood, and agreed to be bound by these terms.

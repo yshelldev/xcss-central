@@ -1,5 +1,5 @@
 {
-  "name": "xcss-central",
+  "name": "xtatix-central",
   "description": "A powerful CSS Orchastrator for building scalable and high-performance CSS frameworks. Seamlessly blend the raw potential of CSS with the ease of pre-made utilities, managed by a core orchestrator.",
   "version": "0.0.27",
   "compilerVersion": "0.0.27",
@@ -14,7 +14,7 @@
   "scripts": {
     "sync": "./compiler/scripts/sync.sh",
     "postinstall": "chmod +x ./execute/index.js && ./execute/index.js",
-    "scaffold:link": "ln -s \"$(pwd)/scaffold\" ../xcss-scaffold",
+    "scaffold:link": "ln -s \"$(pwd)/scaffold\" ../xcaffold",
     "profile": "go install github.com/moderato-app/live-pprof@latest && live-pprof",
     "lint": "cd source && golangci-lint run && cd ..",
     "build": "cd compiler && chmod +x ./scripts/build.sh && ./scripts/build.sh && cd ..",
@@ -23,11 +23,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/yshelldev/xcss-central"
+    "url": "https://github.com/yshelldev/xtatix-central"
   },
   "keywords": [
     "css",
-    "xcss",
+    "xtatix",
     "styles",
     "semantic",
     "frontend",
@@ -38,13 +38,13 @@
     "name": "Vyshnav Prasad",
     "url": "https://www.yshell.dev"
   },
-  "license": "MIT",
-  "licenseFile": "LICENSE",
-  "homepage": "https://www.xcss.io",
+  "license": "Custom",
+  "licenseFile": "LICENSE.md",
+  "homepage": "https://www.xtatix.io",
   "bugs": {
-    "url": "https://github.com/yshelldev/xcss-central/issues"
+    "url": "https://github.com/yshelldev/xtatix-central/issues"
   },
-  "contributing": "https://github.com/yshelldev/xcss-central/blob/main/CONTRIBUTING.md",
+  "contributing": "https://github.com/yshelldev/xtatix-central/blob/main/CONTRIBUTING.md",
   "funding": {
     "type": "github",
     "url": "https://github.com/sponsors/yshelldev"
