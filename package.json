@@ -8,8 +8,8 @@
   "exports": "./execute/index.js",
   "typings": "./execute/index.d.ts",
   "bin": {
-    "xcss": "./execute/index.js",
-    "xdev": "./compiler/scripts/live.sh"
+    "xtatix": "./execute/index.js",
+    "xtxdev": "./compiler/scripts/live.sh"
   },
   "scripts": {
     "sync": "./compiler/scripts/sync.sh",
