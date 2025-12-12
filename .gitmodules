@@ -1,6 +1,3 @@
-[submodule "compiler"]
-	path = compiler
-	url = https://github.com/yshelldev/xtatix-compiler.git
 [submodule "scaffold"]
 	path = scaffold
 	url = https://github.com/xtatixone/xcaffold.git
