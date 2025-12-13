@@ -1,5 +1,5 @@
 {
-  "name": "xtatix-central",
+  "name": "xtatix",
   "description": "A powerful CSS Orchastrator for building scalable and high-performance CSS frameworks. Seamlessly blend the raw potential of CSS with the ease of pre-made utilities, managed by a core orchestrator.",
   "version": "0.0.27",
   "compilerVersion": "0.0.27",
@@ -8,8 +8,9 @@
   "exports": "./execute/index.js",
   "typings": "./execute/index.d.ts",
   "bin": {
+    "xtx": "./execute/index.js",
     "xtatix": "./execute/index.js",
-    "xtxdev": "./compiler/scripts/live.sh"
+    "xdv": "./compiler/scripts/live.sh"
   },
   "scripts": {
     "sync": "./compiler/scripts/sync.sh",

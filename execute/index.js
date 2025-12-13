@@ -7,7 +7,7 @@ import { fileURLToPath } from 'url';
 import { TryDownloadingUrls } from './install.js';
 
 // Repo for Bin download.
-const REPONAME = "xtatix-central";
+const REPONAME = "xtatix";
 const REPOLINK = "https://github.com/xtatixone/" + REPONAME
 
 const platformBinMap = {
@@ -44,9 +44,15 @@ const packageData = fs.existsSync(packageJsonPath) ? JSON.parse(fs.readFileSync(
 const scaffoldData = fs.existsSync(scaffoldJsonPath) ? JSON.parse(fs.readFileSync(scaffoldJsonPath, 'utf8')) : {};
 const compilerData = fs.existsSync(compilerConfigPath) ? JSON.parse(fs.readFileSync(compilerConfigPath, 'utf8')) : {};
 
-const UpdatePackageJson = () => fs.writeFileSync(packageJsonPath, JSON.stringify(packageData, " ", "  "))
-const UpdateScaffoldJson = () => fs.writeFileSync(scaffoldJsonPath, JSON.stringify(scaffoldData, " ", "  "))
-const UpdateCompilerConfig = () => fs.writeFileSync(compilerConfigPath, JSON.stringify(compilerData, " ", "  "))
+function savejson(dst, obj) {
+    const dir = path.dirname(dst)
+    if (!fs.existsSync(dir)) { fs.mkdirSync(dir, { recursive: true }); }
+    fs.writeFileSync(dst, JSON.stringify(obj, " ", "  "));
+}
+
+const UpdatePackageJson = () => savejson(packageJsonPath, packageData)
+const UpdateScaffoldJson = () => savejson(scaffoldJsonPath, scaffoldData)
+const UpdateCompilerConfig = () => savejson(compilerConfigPath, compilerData)
 
 let version = "";
 if (packageData.name === REPONAME) {
